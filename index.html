@@ -1,42 +1,228 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Course Portal</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFT 302 Course Portal</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f4f4f4;
+}
+
+header{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.container{
+    width:85%;
+    margin:auto;
+    margin-top:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+button{
+    background:#0066cc;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#004c99;
+}
+
+input[type=file]{
+    margin-top:10px;
+}
+
+#fileName{
+    margin-top:10px;
+    color:#333;
+    font-weight:bold;
+}
+
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:20px;
+}
+
+</style>
+
 </head>
 <body>
 
 <header>
-    <h1>Select a Course</h1>
-    <p>Course Portal</p>
+    <h1>IFT 302</h1>
+    <h3>Internet and Web Technology</h3>
 </header>
 
 <div class="container">
 
-    <h2>Course Description</h2>
-    <p>
-        Courses
-    </p>
+    <div class="card">
+        <h2>Course Overview</h2>
 
-    <h2>Download Course Syllabus</h2>
+        <p>
+            IFT 302 introduces students to Internet technologies,
+            web development, PHP programming, MVC architecture,
+            Servlets, JDBC, and modern web applications.
+        </p>
+    </div>
 
-    <a href="IFT302_Syllabus.pdf" download>
-        <button>Download Syllabus</button>
-    </a>
+    <div class="card">
+        <h2>Course Topics</h2>
 
-    <h2>Upload Assignment or Course Material</h2>
+        <ul>
+            <li>Internet and WWW</li>
+            <li>Web Browsers</li>
+            <li>URLs</li>
+            <li>HTTP & HTTPS</li>
+            <li>PHP Programming</li>
+            <li>MVC Framework</li>
+            <li>Java Servlets</li>
+            <li>JDBC</li>
+        </ul>
+    </div>
 
-    <form action="#" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <br><br>
-        <button type="submit">Upload File</button>
-    </form>
+    <div class="card">
+
+        <h2>Download Course Syllabus</h2>
+
+        <a href="IFT302_Syllabus.pdf"
+           download
+           onclick="downloadSyllabus()">
+
+            <button>
+                Download Syllabus
+            </button>
+
+        </a>
+
+        <p id="downloadCount">
+            Downloads: 0
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Upload Assignment / Course Material</h2>
+
+        <form id="uploadForm">
+
+            <input
+                type="file"
+                id="fileInput">
+
+            <p id="fileName">
+                No file selected
+            </p>
+
+            <button type="submit">
+                Upload File
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Current Date & Time</h2>
+
+        <p id="datetime"></p>
+
+    </div>
 
 </div>
 
 <footer>
-    <p>IFT 302 Course Website</p>
+    <p>IFT 302 Course Portal © 2026</p>
 </footer>
+
+<script>
+
+let downloads = 0;
+
+function downloadSyllabus(){
+
+    downloads++;
+
+    document.getElementById("downloadCount")
+    .innerHTML =
+    "Downloads: " + downloads;
+}
+
+document.getElementById("fileInput")
+.addEventListener("change", function(){
+
+    if(this.files.length > 0){
+
+        document.getElementById("fileName")
+        .innerHTML =
+        "Selected File: " +
+        this.files[0].name;
+    }
+});
+
+document.getElementById("uploadForm")
+.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    let file =
+    document.getElementById("fileInput")
+    .files[0];
+
+    if(!file){
+
+        alert(
+        "Please select a file first!"
+        );
+
+        return;
+    }
+
+    alert(
+    "File '" +
+    file.name +
+    "' uploaded successfully!"
+    );
+
+});
+
+function updateTime(){
+
+    let now = new Date();
+
+    document.getElementById("datetime")
+    .innerHTML =
+    now.toLocaleString();
+}
+
+setInterval(updateTime,1000);
+
+updateTime();
+
+</script>
 
 </body>
 </html>
