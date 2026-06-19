@@ -1,52 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFT 302 - Internet and Web Technology</title>
+    <title>Course Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>IFT 302</h1>
-        <p>Internet and Web Technology</p>
-    </header>
+<header>
+    <h1>Select a Course</h1>
+    <p>Course Portal</p>
+</header>
 
-    <section class="about">
-        <h2>About the Course</h2>
-        <p>
-            IFT 302 introduces students to Internet technologies,
-            web development, PHP programming, MVC frameworks,
-            Servlets, JDBC, and database connectivity.
-        </p>
-    </section>
+<div class="container">
 
-    <section class="topics">
-        <h2>Course Topics</h2>
-        <ul>
-            <li>Internet and WWW</li>
-            <li>Web Browsers and URLs</li>
-            <li>HTTP and HTTPS</li>
-            <li>PHP Programming</li>
-            <li>MVC Framework</li>
-            <li>Java Servlets</li>
-            <li>JDBC</li>
-            <li>Database Connectivity</li>
-        </ul>
-    </section>
+    <h2>Course Description</h2>
+    <p>
+        Courses
+    </p>
 
-    <section class="download">
-        <h2>Download Course Syllabus</h2>
+    <h2>Download Course Syllabus</h2>
 
-        <a href="syllabus.pdf" download>
-            <button>Download Syllabus</button>
-        </a>
-    </section>
+    <a href="IFT302_Syllabus.pdf" download>
+        <button>Download Syllabus</button>
+    </a>
 
-    <footer>
-        <p>&copy; 2026 IFT 302 Course Website</p>
-    </footer>
+    <h2>Upload Assignment or Course Material</h2>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <br><br>
+        <button type="submit">Upload File</button>
+    </form>
+
+</div>
+
+<footer>
+    <p>IFT 302 Course Website</p>
+</footer>
 
 </body>
 </html>
